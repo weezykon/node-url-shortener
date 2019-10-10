@@ -1,11 +1,11 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 const { Schema } = mongoose;
-const urlShortenSchema = new Schema({
-    long_url: String,
-    clipped_url: String,
-    urlCode: String,
-    created_by: String,
-    createdAt: { type: Date, default: Date.now },
-    click_count: Number,
+
+const UrlShortenSchema = new Schema({
+	long_url: { type: String, required: true },
+	urlCode: { type: String, required: true },
+	createdAt: { type: Date, default: Date.now },
+	click_count: { type: Number, required: true, default: 0 }
 });
-mongoose.model("UrlShorten", urlShortenSchema);
+
+export default mongoose.model("UrlShorten", UrlShortenSchema);
